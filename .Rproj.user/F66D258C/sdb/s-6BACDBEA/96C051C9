@@ -1,0 +1,17 @@
+{
+    "contents" : "---\ntitle: \"demo\"\noutput: html_document\n---\n\nNote that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.\n\n## Fractal by R\n\n### Declare value\n```{r}\nn0 = matrix( c( 0, 0, 0, 0.16), nrow=2, ncol=2, byrow = TRUE )\nn1 = matrix( c( 0.85, 0.04, -0.04, 0.85), nrow=2, ncol=2, byrow = TRUE )\nn2 = matrix( c( 0.2, -0.26, -0.23, 0.22), nrow=2, ncol=2, byrow = TRUE )\nn3 = matrix( c( -0.15, 0.28, -0.26, 0.24), nrow=2, ncol=2, byrow = TRUE )\np = matrix( c(0,0), nrow=2, ncol=1, byrow = TRUE)\nvectorShow = seq(1, 400)\n\npobab = seq(1,40000)\nprobab = runif( 40000, 0, 1)\n```\n\n### For loop, 40000 point\n```{r}\n\nfor (i in 1:40000){\n  if (probab[i] <= 5 & probab[i] > 0) {\n    p = n0 %*% p\n    vectorShow[i] = p\n  } else if (probab[i] > 5 & probab[i] <= 86){\n    p = n1 %*% p + matrix( c(0, 0.16), nrow=2, ncol=1, byrow = TRUE)\n    vectorShow[i] = p\n  } else if(probab[i] > 86 & probab[i] <= 93){\n    p = n2 %*% p + matrix( c(0, 0.16), nrow=2, ncol=1, byrow = TRUE)\n    vectorShow[i] = p\n  } else if (probab[i] > 93 & probab[i] <= 100) {\n    p = n3 %*% p + matrix( c(0, 0.44), nrow=2, ncol=1, byrow = TRUE)\n    vectorShow[i] = p\n  }\n}\n  \n\n```\n\n### Show the result of Fractal\n```{r, echo=FALSE}\nplot(vectorShow)\n```\n",
+    "created" : 1412421355507.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4056812295",
+    "id" : "96C051C9",
+    "lastKnownWriteTime" : 1412489902,
+    "path" : "~/workspace/Rdemo/foo.Rmd",
+    "project_path" : "foo.Rmd",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_markdown"
+}

@@ -1,0 +1,48 @@
+---
+title: "demo"
+output: html_document
+---
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## Fractal by R
+
+### Declare value
+```{r}
+n0 = matrix( c( 0, 0, 0, 0.16), nrow=2, ncol=2, byrow = TRUE )
+n1 = matrix( c( 0.85, 0.04, -0.04, 0.85), nrow=2, ncol=2, byrow = TRUE )
+n2 = matrix( c( 0.2, -0.26, -0.23, 0.22), nrow=2, ncol=2, byrow = TRUE )
+n3 = matrix( c( -0.15, 0.28, -0.26, 0.24), nrow=2, ncol=2, byrow = TRUE )
+p = matrix( c(0,0), nrow=2, ncol=1, byrow = TRUE)
+vectorShow = seq(1, 400)
+
+pobab = seq(1,40000)
+probab = runif( 40000, 0, 1)
+```
+
+### For loop, 40000 point
+```{r}
+
+for (i in 1:40000){
+  if (probab[i] <= 5 & probab[i] > 0) {
+    p = n0 %*% p
+    vectorShow[i] = p
+  } else if (probab[i] > 5 & probab[i] <= 86){
+    p = n1 %*% p + matrix( c(0, 0.16), nrow=2, ncol=1, byrow = TRUE)
+    vectorShow[i] = p
+  } else if(probab[i] > 86 & probab[i] <= 93){
+    p = n2 %*% p + matrix( c(0, 0.16), nrow=2, ncol=1, byrow = TRUE)
+    vectorShow[i] = p
+  } else if (probab[i] > 93 & probab[i] <= 100) {
+    p = n3 %*% p + matrix( c(0, 0.44), nrow=2, ncol=1, byrow = TRUE)
+    vectorShow[i] = p
+  }
+}
+  
+
+```
+
+### Show the result of Fractal
+```{r, echo=FALSE}
+plot(vectorShow)
+```
