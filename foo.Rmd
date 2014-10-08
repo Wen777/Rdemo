@@ -1,5 +1,5 @@
 ---
-title: "demo"
+title: "Demo"
 output: html_document
 ---
 ```
@@ -20,7 +20,7 @@ yais = 40000
 vectorShow = matrix (nrow = yais, ncol = xais )
 
 probab = seq(1,40000)
-probab = runif( 40000, 0, 1)
+probab = runif(40000, 0, 1)
 ```
 
 ### For loop, 40000 point
@@ -45,7 +45,7 @@ for (i in 1:40000){
 
 ### Show the result of Fractal
 ```{r, echo=FALSE}
-plot(vectorShow)
-
-plot(x = vectorShow[, 2], y = vectorShow[, 1], plt = c(0, 10, -5, 5), cex = 0.1, asp = 1)
+plot(x = vectorShow[, 2], y = vectorShow[, 1], plt = c(0, 10, -5, 5), cex = 0.1, asp = 1, col="#5FB404" )
 ```
+
+
